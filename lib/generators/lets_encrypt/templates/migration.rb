@@ -5,7 +5,8 @@ class CreateLetsencryptCertificates < ActiveRecord::Migration<%= migration_versi
   def change
     create_table :letsencrypt_certificates do |t|
       t.string   :domain
-      t.text     :certificate, limit: 65535
+      t.text     :encrypted_certificate_secret, limit: 65535
+      t.text     :encrypted_certificate_secret_iv, limit: 65535
       t.text     :intermediaries, limit: 65535
       t.text     :key, limit: 65535
       t.datetime :expires_at

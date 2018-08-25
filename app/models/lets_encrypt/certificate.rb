@@ -73,6 +73,12 @@ module LetsEncrypt
       LetsEncrypt::Redis.save(self)
     end
 
+    attr_encrypted :certificate,       key: proc { |certificate| certificate.encryption_key }
+
+    def encryption_key
+      Base64.decode64(Rails.application.credentials[Rails.env.to_sym][:encryption_key])
+    end
+
     protected
 
     def logger
