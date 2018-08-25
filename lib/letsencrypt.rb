@@ -28,11 +28,11 @@ module LetsEncrypt
     end
 
     def private_key
-      @private_key ||= OpenSSL::PKey::RSA.new(load_private_key.gsub("\\n", "\n"))
+      @private_key ||= OpenSSL::PKey::RSA.new(load_private_key)
     end
 
     def load_private_key
-      return ENV['LETSENCRYPT_PRIVATE_KEY'] if config.use_env_key
+      return ENV['LETSENCRYPT_PRIVATE_KEY'].gsub(" ", "\n") if config.use_env_key
       return File.open(private_key_path) if File.exist?(private_key_path)
       generate_private_key
     end
