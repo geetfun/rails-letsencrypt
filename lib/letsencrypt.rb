@@ -28,7 +28,7 @@ module LetsEncrypt
     end
 
     def private_key
-      @private_key ||= OpenSSL::PKey::RSA.new(load_private_key)
+      @private_key ||= OpenSSL::PKey::RSA.new(load_private_key.gsub("\\n", "\n"))
     end
 
     def load_private_key
