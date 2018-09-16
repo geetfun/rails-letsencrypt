@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 4.1"
   s.add_dependency "acme-client", "~> 2.0.0"
   s.add_dependency "redis"
-  s.add_dependency "attr_encrypted", "~> 3.0.0"
+  s.add_dependency "attr_encrypted", "~> 3.1"
 
 
   s.add_development_dependency "appraisal"
